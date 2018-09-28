@@ -1,6 +1,7 @@
 package ru.goryacms.testmvc;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +14,10 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -80,7 +83,7 @@ public class Application {
     }
 
     @Bean(name = "testmvcTransactionManager")
-    public PlatformTransactionManager postgresqlTransactionManager(@Qualifier("testmvcEntityManager") EntityManagerFactory entityManagerFactory) {
+    public PlatformTransactionManager mysqlTransactionManager(@Qualifier("testmvcEntityManager") EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
     }
 }
