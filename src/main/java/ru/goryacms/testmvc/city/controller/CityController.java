@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.goryacms.testmvc.city.dto.CityDto;
 import ru.goryacms.testmvc.city.service.CityService;
@@ -17,7 +18,7 @@ import java.util.Map;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
-@RestController
+@Controller
 @RequestMapping(value = "/api/city", produces = APPLICATION_JSON_UTF8_VALUE)
 public class CityController {
     private static final Logger LOGGER = LoggerFactory.getLogger(CityController.class);
