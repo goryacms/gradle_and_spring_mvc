@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.goryacms.testmvc.city.dto.CityDto;
 import ru.goryacms.testmvc.city.service.CityService;
@@ -30,40 +31,44 @@ public class CityController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ResponseDto> limitById(@PathVariable("id") long id) throws ResourceNotFoundException {
+    public ResponseEntity<ResponseDto> cityById(@PathVariable("id") long id) throws ResourceNotFoundException {
         LOGGER.info("Get from city table by id = {}", id);
         return ResponseEntity.ok(new ResponseDto<CityDto>(cityService.loadById(id)));
     }
 
     @GetMapping(value = "/")
-    public ResponseEntity<ResponseDto> limitList() {
+    public String cityList(Model model) {
         LOGGER.info("Get list from city table");
-        return ResponseEntity.ok(new ResponseDto<List<CityDto>>(cityService.findAll()));
+        List<CityDto> cities = cityService.findAll();
+        int size = cities.size();
+        LOGGER.info("There are {} positions", size);
+        model.addAttribute("listCity", cities);
+        return "cities/listCities";
     }
 
     @PostMapping(value = "/")
-    public ResponseEntity<ResponseDto> saveLimit(@RequestBody CityDto limitDto) {
-        LOGGER.info("Save to city table by this parameters: {}", limitDto);
-        return ResponseEntity.ok(new ResponseDto<CityDto>(cityService.save(limitDto)));
+    public ResponseEntity<ResponseDto> saveCity(@RequestBody CityDto cityDto) {
+        LOGGER.info("Save to city table by this parameters: {}", cityDto);
+        return ResponseEntity.ok(new ResponseDto<CityDto>(cityService.save(cityDto)));
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ResponseDto> updateLimit(@RequestBody CityDto limitDto,
+    public ResponseEntity<ResponseDto> updateCity(@RequestBody CityDto cityDto,
                                                    @PathVariable("id") long id) {
-        limitDto.setId(id);
-        LOGGER.info("Update city table by {}", limitDto);
-        return ResponseEntity.ok(new ResponseDto<CityDto>(cityService.update(limitDto)));
+        cityDto.setId(id);
+        LOGGER.info("Update city table by {}", cityDto);
+        return ResponseEntity.ok(new ResponseDto<CityDto>(cityService.update(cityDto)));
     }
 
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<ResponseDto> patchLimit(@RequestBody Map<String, Object> updates,
+    public ResponseEntity<ResponseDto> patchCity(@RequestBody Map<String, Object> updates,
                                                   @PathVariable("id") long id) {
         LOGGER.info("Update city table by id = {}", id);
         return ResponseEntity.ok(new ResponseDto<CityDto>(cityService.patch(updates, id)));
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<ResponseDto> deleteLimit(@PathVariable("id") long id) throws TestmvcException {
+    public ResponseEntity<ResponseDto> deleteCity(@PathVariable("id") long id) throws TestmvcException {
         LOGGER.info("Delete from city table base by {}", id);
         return ResponseEntity.ok(new ResponseDto<String>(cityService.delete(id)));
     }

@@ -9,3 +9,9 @@ MVC - приложение с использованием SpringBoot, gradle и
 
     C:\> "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqladmin" -u root -p shutdown
     
+Инструмент сборки - [Gradle](https://gradle.org/install/)
+
+Если возникает проблема с подтягиванием зависимостей, необходимо выполнить (Run -> edit configurations -> + -> Gradle -> Tasks: clean build)
+    
+    clean build
+    

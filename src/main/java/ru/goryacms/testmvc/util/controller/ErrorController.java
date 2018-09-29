@@ -38,6 +38,7 @@ public class ErrorController {
                 break;
             }
         }
+        LOGGER.error("Was error: {}", errorMsg);
         errorPage.addObject("errorMsg", errorMsg);
         return errorPage;
     }

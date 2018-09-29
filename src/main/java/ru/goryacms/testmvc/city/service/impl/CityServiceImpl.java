@@ -32,7 +32,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    @Transactional
+    @org.springframework.transaction.annotation.Transactional
     public CityDto loadById(long id) throws ResourceNotFoundException {
         City city = cityRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Information not found")
