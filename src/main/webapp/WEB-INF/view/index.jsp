@@ -6,58 +6,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<header>
-    <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <script src="webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="webjars/jquery/3.3.1-1/jquery.min.js"></script>
-</header>
-
+    <jsp:include page="header.jsp" />
 <body>
-
-<div class="container">
-
-
-    <h1>All Users</h1>
-
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>#ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>framework</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-
-            <tr>
-                <td>
-                        dsafsdfsdfsdf
-                </td>
-                <td></td>
-                <td></td>
-                <td>
-
-                </td>
-                <td>
-                    <spring:url value="/users/1" var="userUrl" />
-                    <spring:url value="/users/1/delete" var="deleteUrl" />
-                    <spring:url value="/users/1/update" var="updateUrl" />
-
-                    <button class="btn btn-info"
-                            onclick="location.href='${userUrl}'">Query</button>
-                    <button class="btn btn-primary"
-                            onclick="location.href='${updateUrl}'">Update</button>
-                    <button class="btn btn-danger"
-                            onclick="this.disabled=true;post('${deleteUrl}')">Delete</button>
-                </td>
-            </tr>
-
-    </table>
-
-</div>
-
-
+    <jsp:include page="menu.jsp" />
+    <div class="container">
+        <h2>Start page</h2>
+        <div class="alert alert-info">
+            <strong>About this site!</strong> This is a test site for trying gradle, spring mvc in conjunction with mysql. Topic: cities, countries and populations
+        </div>
+    </div>
+    <jsp:include page="footer.jsp" />
 </body>
 </html>
