@@ -10,7 +10,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="/api/city/">Cities</a></li>
+            <li><a href="/city/">Cities</a></li>
             <li><a href="#">Countries</a></li>
             <li><a href="#">Populations</a></li>
         </ul>

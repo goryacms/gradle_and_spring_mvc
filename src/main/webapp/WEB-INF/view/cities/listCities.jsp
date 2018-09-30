@@ -44,13 +44,13 @@
                         ${city.population}
                 </td>
                 <td>
-                    <spring:url value="/api/city/${city.id}" var="cityUrl" />
-                    <spring:url value="/users/${user.id}/delete" var="deleteUrl" />
-                    <spring:url value="/users/${user.id}/update" var="updateUrl" />
+                    <spring:url value="/city/${city.id}" var="cityUrl" />
+                    <spring:url value="/city/${city.id}/delete" var="deleteUrl" />
+                    <spring:url value="/city/${city.id}/update" var="updateUrl" />
 
-                    <button class="btn btn-info" id="aboutCity" data-url="'${cityUrl}'">Query</button>
+                    <button class="btn btn-info" onclick="location.href='${cityUrl}'">Query</button>
                     <button class="btn btn-primary"
-                            onclick="test('${updateUrl}')">Update</button>
+                            onclick="location.href='${updateUrl}'">Update</button>
                     <button class="btn btn-danger"
                             onclick="this.disabled=true;post('${deleteUrl}')">Delete</button>
                 </td>

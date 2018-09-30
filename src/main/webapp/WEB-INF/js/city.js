@@ -1,8 +1,11 @@
 $(document).ready(function () {
-    $("#aboutCity").click(function () {
-        $("#container").show();
-        $("#office").hide();
-        $("#user").hide();
-    });
-
+    function  getAllCities() {
+        alert();
+        $.ajax({
+            url : '/api/city/',
+            success : function(data) {
+                $('#container').html(data);
+            }
+        });
+    }
 });
