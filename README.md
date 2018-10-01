@@ -15,3 +15,11 @@ MVC - приложение с использованием SpringBoot, gradle и
     
     clean build
     
+Почистить кеш gradle:
+
+    rm -rf $HOME/.gradle/caches/
+    
+Или: 
+
+    ./gradlew build --refresh-dependencies
+    
