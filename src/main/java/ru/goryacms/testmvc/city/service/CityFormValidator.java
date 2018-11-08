@@ -5,7 +5,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import ru.goryacms.testmvc.city.dto.CityDto;
-import ru.goryacms.testmvc.city.model.City;
 
 @Component
 public class CityFormValidator implements Validator {

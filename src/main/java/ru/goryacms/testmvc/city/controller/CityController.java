@@ -85,14 +85,16 @@ public class CityController {
         return ResponseEntity.ok(new ResponseDto<CityDto>(cityService.save(cityDto)));
     }
 
-    @PutMapping(value = "/{id}")
-    public String updateCity(@ModelAttribute("cityForm") @Validated CityDto cityDto,
+    @PutMapping(value = "/")
+    public String updateCity(@RequestBody @Validated CityDto cityDto,
                              BindingResult result, Model model,
                              final RedirectAttributes redirectAttributes) {
         LOGGER.info("Update city table by {}", cityDto);
         if (result.hasErrors()) {
+            LOGGER.info("Has error");
             return "cities/formCity";
         } else {
+            LOGGER.info("Not error");
             redirectAttributes.addFlashAttribute("css", "success");
 //            if(city.isNew()){
 //                redirectAttributes.addFlashAttribute("msg", "User added successfully!");

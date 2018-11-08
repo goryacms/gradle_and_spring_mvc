@@ -65,7 +65,7 @@ public class CityDto {
                 ", name='" + name + '\'' +
                 ", countryCode='" + countryCode + '\'' +
                 ", district='" + district + '\'' +
-                ", population=" + population +
+                ", language=" + population +
                 '}';
     }
 }

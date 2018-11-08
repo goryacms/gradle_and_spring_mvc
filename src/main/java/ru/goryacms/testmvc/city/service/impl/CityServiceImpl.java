@@ -32,12 +32,12 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    @org.springframework.transaction.annotation.Transactional
+    @Transactional
     public CityDto loadById(long id) throws ResourceNotFoundException {
         City city = cityRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Information not found")
         );
-        LOGGER.info("There is {} was received from wallet_city", city);
+        LOGGER.info("There is {} was received from city table", city);
         return modelMapper.map(city, CityDto.class);
     }
 
@@ -67,7 +67,7 @@ public class CityServiceImpl implements CityService {
     @Transactional
     public CityDto save(CityDto CityDto) {
         City city = cityRepository.save(modelMapper.map(CityDto, City.class));
-        LOGGER.info("New record from wallet_city is {}", city);
+        LOGGER.info("New record from city is {}", city);
         return modelMapper.map(city, CityDto.class);
     }
 
@@ -82,7 +82,7 @@ public class CityServiceImpl implements CityService {
     public CityDto patch(Map<String, Object> updates, long id) {
         updates.put("id", id);
         CityDto CityDto = objectMapper.convertValue(updates, CityDto.class);
-        LOGGER.info("Update wallet_city by {}", CityDto);
+        LOGGER.info("Update city by {}", CityDto);
         return this.save(CityDto);
     }
 }
